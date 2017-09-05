@@ -1,12 +1,17 @@
 {
-  "name": "workoulogclient",
+  "name": "workoutlogclient",
   "version": "1.0.0",
-  "description": "",
+  "description": "" ,
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./node_modules/http-server/bin/http-server"
   },
-  "author": "sh",
-  "license": "ISC"
+  "author": "Sh",
+  "license": "ISC",
+  "devDependencies": {
+  	"http-server":"^0.10.0"
+  	}
+
+  }
 }
