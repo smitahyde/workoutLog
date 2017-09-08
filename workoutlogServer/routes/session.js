@@ -9,6 +9,7 @@ router.post('/', function(req, res) {
 	User.findOne( { where: { username: req.body.user.username } } ).then(
 		function(user) {
 			if (user) {
+				console.log(user.passwordhash)
 				bcrypt.compare(req.body.user.password, user.passwordhash, function(err, matches){
 					if (matches) {
 					   var token = jwt.sign({id: user.id}, "i_am_secret", {expiresIn: 60*60*24 });
@@ -18,11 +19,12 @@ router.post('/', function(req, res) {
 							sessionToken: token
 						});
 					}else {
-					res.status(500).send({ error: "failed to authenticate" });
+						
+					res.status(500).send({ error: "fail to auth" });
 					}
 				});
 			} else {
-				res.status(500).send({ error: "failed to authenticate" });
+				res.status(500).send({ error: "fail to authenticate" });
 			}
 		},
 		function(err) {
