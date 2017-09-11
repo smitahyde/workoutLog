@@ -5,6 +5,7 @@ var Definition = sequelize.import('../models/definition');
 
 router.post('/', function(req, res) {
 	//variables
+	console.log('req ', req.user)
 	    var description = req.body.definition.desc;
         var logType = req.body.definition.type;
         var owner = req.user.id;
