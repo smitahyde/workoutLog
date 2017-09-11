@@ -9,7 +9,7 @@ var User = sequelize.import('./models/user');
 
 
 //Create table
-User.sync(); // sync( (force: true)), to drop then create eacch time the app starts!
+sequelize.sync(); // sync( (force: true)), to drop then create eacch time the app starts!
 
 app.use(bodyParser.json());
 
@@ -26,7 +26,8 @@ app.use(require('./middleware/validate-session'));
 app.use('/api/user', require('./routes/user'));
 //login route
 app.use('/api/login',require('./routes/session'));
-app.use('api/definition', require('.routes/definition'));
+app.use('/api/definition', require('./routes/definition'));
+app.use('/api/log',require('./routes/log'));
 
 
 app.listen(3000, function(){

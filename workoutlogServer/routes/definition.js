@@ -26,10 +26,9 @@ router.post('/', function(req, res) {
 		function createError(err) {
 			res.send(500, err.message);
 		    	definition: definition
-		}
-
-	};
-});
+		});
+	}
+);
 
 router.get('/',function(req, res) {
 	//user variable
@@ -56,30 +55,3 @@ router.get('/',function(req, res) {
 
 module.exports = router;
 
-		
-	
-
-});
-
-	//methods
-	Definition
-	//objects must match the model 
-	.create({ 
-	   	description: description,
-	   	logType: logType,
-	   	owner: owner
-	   })
-
-		.then(
-				function createSuccess(definition) {
-				//send a response as json
-		   		res.json({
-		   			definition: definition
-		   		});
-		   	}, 
-		   function createError(err) {
-		       res.send(500, err.message);
-		   }
-
-		);
-});
