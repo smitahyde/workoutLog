@@ -7,7 +7,6 @@ var sequelize = require('./db.js');
 
 var User = sequelize.import('./models/user');
 
-
 //Create table
 sequelize.sync(); // sync( (force: true)), to drop then create eacch time the app starts!
 
