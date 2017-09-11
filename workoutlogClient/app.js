@@ -1,7 +1,7 @@
 $(function(){
-	var WorkoutLog =(function($, undefined){
+	var WorkoutLog = (function($, undefined) {
 		var API_BASE = "http://localhost:3000/api/";
-		var userDefinition = [];
+		var userDefinitions = [];
 
 var setAuthHeader = function(sessionToken) {
 	window.localStorage.setItem("sessionToken", sessionToken);
@@ -15,29 +15,29 @@ var setAuthHeader = function(sessionToken) {
 	});
 };
 // public
-return{
+return {
 	API_BASE: API_BASE,
 	setAuthHeader: setAuthHeader
 };
 
 })(jQuery);
 
-});
+
 
 // Ensure .disabled aren't clickable
-$(".nav-tabs a[data-toggle-tab]").on("click",function(e)) {
+$(".nav-tabs a[data-toggle=tab]").on("click", function (e) {
   var token = window.localStorage.getItem("sessionToken");
-  if($(this).hasClass("disabled")&& !token){
+  if ($(this).hasClass("disabled") && !token) {
   	e.preventDefault();
   	return false;
   }
 });
 
 // bind tab change events
-$('a[data-toggle-"tab"]').on ('shown.bs tab',function(e){
-	var target = $(e.target).attr ("href"); // activated tab
-	if (target === "log") {
-		WorkoutLog.log.setHistory();
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	var target = $(e.target).attr("href"); // activated tab
+	if (target === "#log") {
+		WorkoutLog.log.setDefinitions();
 }
 if (target === "history") {
 	WorkoutLog.log.setHistory();
@@ -45,9 +45,10 @@ if (target === "history") {
 });
 
 //bind enter key
-$(document).on ("keypress", function(e){
- if (e.which === 13) { // enter key 
-	if ($("#signup").trigger("click");
+$(document).on("keypress", function(e) {
+ if (e.which === 13) { // enter key
+ if ($("#signup-modal").is(":visible")){ 
+	 $("#signup").trigger("click");
  }
  if ($("#login-modal").is (":visible")) {
  	$("#login").trigger("click");
@@ -57,10 +58,10 @@ $(document).on ("keypress", function(e){
   }
 });
 var token = window.localStorage.getItem ("sessionToken");
-if (token {
+if (token) {
 	WorkoutLog.setAuthHeader(token);
 }
 // expose this to the other workoutlog modules
 window.WorkoutLog = WorkoutLog;
 
-})
+});
