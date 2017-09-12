@@ -69,10 +69,10 @@ $(function() {
 
 					});
 				getLog.done(function(data) {
-					$('a[href= #update-log"]').tab("show");
-					$('# update-result').val(data.result);
-					$('# update-description').val(data.description);
-					$('# update-id').val(data.id)
+					$('a[href="#update-log"]').tab("show");
+					$('#update-result').val(data.result);
+					$('#update-description').val(data.description);
+					$('#update-id').val(data.id)
 					});	
 				},
 
@@ -102,10 +102,10 @@ $(function() {
 								console.log (data);
 								$("#update-description").val ("");
 								$ ("#update-result").val("");
-								$ ('a[href= #"history"]').tab("show");
+								$ ('a[href="#history"]').tab("show");
 
 							});
-					}	,	
+					},	
 			delete: function(){
 				var thisLog = {
 					// "this" is the button on the li

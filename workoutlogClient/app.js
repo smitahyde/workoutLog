@@ -24,7 +24,7 @@ return {
 
 
 // Ensure .disabled aren't clickable
-$(".nav-tabs a[data-toggle=tab]").on("click", function (e) {
+$('.nav-tabs a[data-toggle="tab"]').on("click", function (e) {
   var token = window.localStorage.getItem("sessionToken");
   if ($(this).hasClass("disabled") && !token) {
   	e.preventDefault();
@@ -38,7 +38,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	if (target === "#log") {
 		WorkoutLog.log.setDefinitions();
 }
-if (target === "history") {
+if (target === "#update-log") {
+		WorkoutLog.log.setDefinitions();
+}
+if (target === "#history") {
 	WorkoutLog.log.setHistory();
 }
 });
@@ -56,6 +59,8 @@ $(document).on("keypress", function(e) {
 
   }
 });
+
+//setHeader if we
 var token = window.localStorage.getItem ("sessionToken");
 if (token) {
 	WorkoutLog.setAuthHeader(token);

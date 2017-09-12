@@ -1,4 +1,4 @@
-(function() {
+$(function() {
    $.extend(WorkoutLog,{
       signup: function() {
             var username = $("#su_username").val();
@@ -14,14 +14,14 @@
               .done(function(data){
                  if(data.sessionToken){
                   WorkoutLog.setAuthHeader(data.sessionToken);
-                  console.log("You made it!");
-                  console.log (data.sessionToken);
+                  WorkoutLog.definition.fetchAll();
+                  WorkoutLog.log.fetchAll();
                  }
                 $("#signup-modal").modal("hide");
                 $(".disabled").removeClass("disabled");
-                //$("#loginout").text("Logout");
+                $("#loginout").text("Logout");
                 //go to define tab
-                //$('.nav-tabs a[href="#define"]').tab('show');
+                $('a[href="#define"]').tab('show');
 
               })
             
@@ -47,12 +47,14 @@
             .done(function(data) {
               if (data.sessionToken){
                  WorkoutLog.setAuthHeader(data.sessionToken);
-                 console.log(data.sessionToken);
+                 WorkoutLog.definition.fetchAll();
+                 WorkoutLog.log.fetchAll();
               }
 
               $("#login-modal").modal("hide");
               $(".disabled").removeClass("disabled");
               $("#loginout").text("Logout");
+              $('a[href="#define"]').tab('show');
             })
 
             .fail(function(){

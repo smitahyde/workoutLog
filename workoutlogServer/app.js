@@ -5,7 +5,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var sequelize = require('./db.js');
 
-var User = sequelize.import('./models/user');
+var Log = sequelize.import('./models/log');
 
 //Create table
 sequelize.sync(); // sync( (force: true)), to drop then create eacch time the app starts!
@@ -20,11 +20,11 @@ app.use(bodyParser.json());
 
 app.use(require('./middleware/headers'));
 app.use(require('./middleware/validate-session'));
-//Creating a user
 
+//Creating a user:
 app.use('/api/user', require('./routes/user'));
-//login route
-app.use('/api/login',require('./routes/session'));
+//login route:
+app.use('/api/login', require('./routes/session'));
 app.use('/api/definition', require('./routes/definition'));
 app.use('/api/log',require('./routes/log'));
 
